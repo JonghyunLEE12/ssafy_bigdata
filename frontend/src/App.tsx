@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import StartPage from "./pages/StartPage/StartPage"
 import MainPage from "./pages/MainPage/MainPage"
 import AllComponents from "./pages/AllComponents"
+import Auth from "./UserComponents/Auth"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<StartPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/dev" element={<AllComponents />} />
+        <Route path="/oauth/kakao/callback" element={<Auth />} />
       </Routes>
     </Router>
   )
