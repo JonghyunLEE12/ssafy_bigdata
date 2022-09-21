@@ -8,7 +8,15 @@ function Auth() {
   const CLIENT_SECRET = "vCiFAO1F3QiMUYfXmR1pddgTcLYFkMFN";
 
   const code = new URL(window.location.href).searchParams.get("code");
+  // axios 로 백엔드 전송 및 받아와햐 하는데
+  // 인가코드
   console.log(code);
+
+  // axios
+
+//   axios.post('',code)
+
+  
   return null;
 }
 export default Auth;
