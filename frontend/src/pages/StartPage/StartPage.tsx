@@ -1,5 +1,5 @@
 // Images
-import mainLogo from "../../assets/logo.png"
+import mainLogo from "../../assets/main_logo.png"
 import feZero from "../../assets/feZero.jpg"
 import kakaoBtn from "../../assets/kakao_login_btn.png"
 
@@ -16,11 +16,6 @@ export default function StartPage() {
     borderBottom: "2px solid rgb(216, 99, 69)",
   }
 
-  // Kakao URL
-  const REST_API_KEY = "4451e1614fc6653da21821b099437e5a";
-  const REDIRECT_URI = "http://localhost:5173/oauth/kakao/callback";
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-
   return (
     <>
       {/* 상단 오렌지색 수평선 */}
@@ -36,9 +31,9 @@ export default function StartPage() {
       >
         <img src={mainLogo} alt="logo" width="90%" />
         <img src={feZero} alt="logo" width="50%" />
-        <a href={KAKAO_AUTH_URL}>
+        <Link to="main">
           <img src={kakaoBtn} alt="logo" width="50%" />
-        </a>
+        </Link>
       </Grid>
     </>
   )
