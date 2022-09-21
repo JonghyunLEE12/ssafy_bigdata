@@ -12,10 +12,6 @@ function Auth() {
   // 인가코드
   console.log(code);
 
-  // axios
-
-//   axios.post('',code)
-
   
   return null;
 }

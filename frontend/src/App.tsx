@@ -10,6 +10,7 @@ import AllComponents from "./pages/AllComponents"
 import SearchPage from "./pages/SearchPage/SearchPage"
 import MyPage from "./pages/MyPage/MyPage"
 import BottomBar from "./components/BottomBar"
+import Auth from "./UserComponents/Auth"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/my-page" element={<MyPage />} />
         <Route path="/dev" element={<AllComponents />} />
+        <Route path="/oauth/kakao/callback" element={<Auth />} />
       </Routes>
       <BottomBar />
     </Router>
