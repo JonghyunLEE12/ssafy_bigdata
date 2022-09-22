@@ -11,6 +11,7 @@ import SearchPage from "./pages/SearchPage/SearchPage"
 import MyPage from "./pages/MyPage/MyPage"
 import BottomBar from "./components/BottomBar"
 import Auth from "./UserComponents/Auth"
+import Azti from "./UserComponents/Azti"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/my-page" element={<MyPage />} />
         <Route path="/dev" element={<AllComponents />} />
         <Route path="/oauth/kakao/callback" element={<Auth />} />
+        <Route path="/azti" element={<Azti />}/>
       </Routes>
       <BottomBar />
     </Router>

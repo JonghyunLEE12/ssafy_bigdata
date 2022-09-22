@@ -7,6 +7,7 @@ function Auth() {
   const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
   const CLIENT_SECRET = "vCiFAO1F3QiMUYfXmR1pddgTcLYFkMFN";
 
+  const url = "http://localhost:8080/api/oauth/login/kakao/"
   const code = new URL(window.location.href).searchParams.get("code");
   // axios 로 백엔드 전송 및 받아와햐 하는데
   // 인가코드
@@ -22,13 +23,17 @@ function Auth() {
   //   })();
   // }, []);
 
-  axios.get("http://localhost:8080/api/oauth/login/kakao/"+code)
+
+  const url2 = "https://api.upbit.com/v1/candles/days?market=KRW-BTC&count=2"
+
+  axios.get(url+code)
   .then((res) => {
     console.log(res)
   })
-  .catch((err)=> {
-    console.log(err)
+  .catch((e)=> {
+    console.log(e)
   })
+
   
   return null;
 }
