@@ -13,6 +13,9 @@ import BottomBar from "./components/BottomBar"
 import Auth from "./UserComponents/Auth"
 import Azti from "./UserComponents/Azti"
 
+// // Provider
+// import { Provider } from "react-redux";
+// import { store } from "./userStore/index"
 
 function App() {
   return (
@@ -24,7 +27,11 @@ function App() {
         <Route path="/my-page" element={<MyPage />} />
         <Route path="/dev" element={<AllComponents />} />
         <Route path="/oauth/kakao/callback" element={<Auth />} />
+        {/* <Provider store={store}>
+          <Route path="/azti" element={<Azti />}/>
+        </Provider> */}
         <Route path="/azti" element={<Azti />}/>
+
       </Routes>
       <BottomBar />
     </Router>

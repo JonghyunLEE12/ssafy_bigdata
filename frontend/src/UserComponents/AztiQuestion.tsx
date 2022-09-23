@@ -13,6 +13,7 @@ import  "./AztiQuestionCss.css"
 
 import React from "react"
 import { useState , useEffect } from "react"
+import { ConstructionOutlined } from "@mui/icons-material";
 
 // 결과 만 백엔드로 보내줄 것
 
@@ -23,7 +24,6 @@ function AztiQuestion() {
         place : string,
         is_korean : string
     }
-    // 리덕스로 중앙에 저장 해야 할 듯
     const user_azti : azti = {
         personal : '',
         mood : '',
@@ -34,32 +34,46 @@ function AztiQuestion() {
 
     const [ question_parameter , setParameter ] = useState<number>(1)
     const [value, setValue] = React.useState('');
-    const [helperText, setHelperText] = React.useState('Choose wisely');
+    const [ user_status , setUserazti] = useState<azti>(user_azti)
 
     // radio button control
     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue((event.target as HTMLInputElement).value);
-        setHelperText(' ');
     };
+
 
     // sumit event control
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if ( question_parameter === 1 ){
-            user_azti.personal = value
+            user_status.personal = value
+            // 숫자 증가
             setParameter((event)=>event += 1)
-            console.log(user_azti)
+
         } else if ( question_parameter === 2){
-            user_azti.mood = value
+            user_status.mood = value
+            // 숫자 증가
             setParameter((event)=>event += 1)
-            console.log(user_azti)
+
+        } else if ( question_parameter === 3) {
+            user_status.place = value
+            // 숫자 증가
+            setParameter((event)=>event += 1)
+
+        } else if (question_parameter === 4) {
+            user_status.is_korean = value
+            // 숫자 증가
+            setParameter((event)=>event += 1)
+        } else if ( question_parameter === 5) {
+            console.log('hi')
         }
 
     }
 
     // question_parameter 변경
     const buttonClick = () => setParameter((event) => event += 1)
-    const buttonGoback = ( ) => setParameter((event) => event -= 1)
+    const buttonGoback = () => setParameter((event) => event -= 1)
+    const resetButton = () => setParameter((event) => event = 1)
  
     if ( question_parameter === 1) {
         return(
@@ -81,7 +95,6 @@ function AztiQuestion() {
                     <FormControlLabel value="emotion" control={<Radio />} label={<h3 className="text-blue-1">예-스</h3>} />
                     <FormControlLabel value="real" control={<Radio />} label={<h3 className="text-blue-1">노-우</h3>} />
                     </RadioGroup>
-                    <FormHelperText>{helperText}</FormHelperText>
                     <Button sx={{ mt: 1, mr: 1 }} type="submit">
                     제출하기
                     </Button>
@@ -108,7 +121,6 @@ function AztiQuestion() {
                     <FormControlLabel value="moist" control={<Radio />} label={<h3 className="text-blue-1">파전에 막걸리!</h3>} />
                     <FormControlLabel value="dry" control={<Radio />} label={<h3 className="text-blue-1">집에 가기 힘들겠다..</h3>} />
                     </RadioGroup>
-                    <FormHelperText>{helperText}</FormHelperText>
                     <Button sx={{ mt: 1, mr: 1 }} type="submit">
                     제출하기
                     </Button>
@@ -119,31 +131,83 @@ function AztiQuestion() {
                 </form>
             </div>
         )
-    } else if ( question_parameter == 3) {
+    } else if ( question_parameter === 3) {
         return (
             <div>
                 <h1 className="text-yellow-1"> 퀘-스챤 3</h1>
-                <h3 className="text-orange-2"> 질문 </h3>
-                <Button onClick={buttonClick}>제출하기</Button>
-                <Button onClick={buttonGoback}>뒤로가기</Button>
+                {/* azti question form */}
+                <form onSubmit={handleSubmit}>
+                <FormControl sx={{ m: 3 }} variant="standard">
+                    <FormLabel id="demo-error-radios">
+                    <h1 className="text-orange-2"> 동네에서 새로운 맛집을 발견했다! 당신의 선택은? </h1>
+                    </FormLabel>
+                    <RadioGroup
+                    aria-labelledby="demo-error-radios"
+                    name="quiz"
+                    value={value}
+                    onChange={handleRadioChange}
+                    >
+                    <FormControlLabel value="hipster" control={<Radio />} label={<h3 className="text-blue-1">친한 친구들에게만 알려준다.</h3>} />
+                    <FormControlLabel value="insider" control={<Radio />} label={<h3 className="text-blue-1">인스타에 공유에 모두에게 알려준다.</h3>} />
+                    </RadioGroup>
+                    <Button sx={{ mt: 1, mr: 1 }} type="submit">
+                    제출하기
+                    </Button>
+                    <Button sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
+                    뒤로가기
+                    </Button>
+                </FormControl>
+                </form>
 
             </div>
         )
-    } else if ( question_parameter == 4) {
+    } else if ( question_parameter === 4) {
         return (
             <div>
                 <h1 className="text-yellow-1"> 퀘-스챤 4</h1>
                 <h3 className="text-orange-2"> 질문 </h3>
-                <Button onClick={buttonClick}>제출하기</Button>
-                <Button onClick={buttonGoback}>뒤로가기</Button>
+                {/* azti question form */}
+                <form onSubmit={handleSubmit}>
+                <FormControl sx={{ m: 3 }} variant="standard">
+                    <FormLabel id="demo-error-radios">
+                    <h1 className="text-orange-2"> 현재 매우 배가고픈 당신, 눈앞에 있는 두 가게 중 당신의 선택은? </h1>
+                    </FormLabel>
+                    <RadioGroup
+                    aria-labelledby="demo-error-radios"
+                    name="quiz"
+                    value={value}
+                    onChange={handleRadioChange}
+                    >
+                    <FormControlLabel value="korean" control={<Radio />} label={<h3 className="text-blue-1">처음 보는 상표의 국밥집.</h3>} />
+                    <FormControlLabel value="alien" control={<Radio />} label={<h3 className="text-blue-1">기본적인 맛이 보장되어 있는 패스트푸드점</h3>} />
+                    </RadioGroup>
+                    <Button sx={{ mt: 1, mr: 1 }} type="submit">
+                    제출하기
+                    </Button>
+                    <Button sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
+                    뒤로가기
+                    </Button>
+                </FormControl>
+                </form>
 
             </div>
         )
-    } else if ( question_parameter == 5) {
+    } else if ( question_parameter === 5) {
         return (
             <div>
                 <h1>결과</h1>
-                <h3> 1: {user_azti.mood}</h3>
+                <h3>{user_status.personal}</h3>
+                <h3>{user_status.mood}</h3>
+                <h3>{user_status.place}</h3>
+                <h3>{user_status.is_korean}</h3>
+                <h3>아재</h3>
+
+                <Button>
+                    추천 받기
+                </Button>
+                <Button onClick={resetButton}>
+                    다시하기
+                </Button>
             </div>
         )
     }
