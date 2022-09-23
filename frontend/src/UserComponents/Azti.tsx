@@ -8,22 +8,28 @@ import  Grid  from "@mui/material/Grid"
 // Components
 import AztiQuestion from "./AztiQuestion"
 
-import react from 'react'
+import react , { useEffect} from 'react'
 
 function Azti () {
+  useEffect(() => {
+
+  },[])
 
     return(
-        <Grid
-        container
-        display="flex"
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <img src={azti_img} alt="logo" width="100%"/>
-        <AztiQuestion/>
+      <div>
+          <Grid
+          container
+          display="flex"
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <img src={azti_img} alt="logo" width="100%"/>
+          
+          <AztiQuestion/>
 
-        </Grid>
+          </Grid>
+      </div>
     )
 
 }
