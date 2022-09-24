@@ -12,18 +12,30 @@ import FormLabel from '@mui/material/FormLabel';
 import  "./AztiQuestionCss.css"
 
 import React from "react"
-import { useState , useEffect , useRef} from "react"
+import { useState , useEffect , useCallback } from "react"
 import { ConstructionOutlined } from "@mui/icons-material";
 import { useSelector , useDispatch } from 'react-redux'
+import {RootState} from '../userStore/store'
 import { userinfo } from "../userStore/userSlice"
 
 // 결과 만 백엔드로 보내줄 것
 
-function AztiQuestion() {
-    const dispatch = useDispatch()
-    useEffect(() => {
 
+function AztiQuestion() {
+    useEffect(() => {
+        const sendUserAzti = () => {
+            dispatch(userinfo(user_status))
+        }
+        sendUserAzti()
     },[])
+
+    const SelectUserAzti = useSelector((state : RootState) => state.userazti)
+    console.log(SelectUserAzti)
+
+    useEffect(() => {
+        // useSelector((state : RootState) => state.userazti)
+    },[])
+    const dispatch = useDispatch()
     type azti = {
         personal : string,
         mood : string,
@@ -100,7 +112,7 @@ function AztiQuestion() {
     }
 
 
-
+    // 현재 문제
     if ( question_parameter === 1) {
         return(
             <div>
@@ -219,7 +231,15 @@ function AztiQuestion() {
             </div>
         )
     } else if ( question_parameter === 5) {
-        // console.log(dispatch(userinfo()))
+        // const ClickButton = useEffect(() => {
+        //     const sendUserAzti = () => {
+        //         dispatch(userinfo(user_status))
+        //     }
+        //     sendUserAzti()
+        // },[])
+        // const sendUserAzti = () => {
+        //     dispatch(userinfo(user_status))
+        // }
         return (
             <div>
                 <h1>결과</h1>
@@ -229,7 +249,9 @@ function AztiQuestion() {
                 <h3>{user_status.is_korean}</h3>
                 <h3>아재</h3>
 
-                <Button onClick={() => dispatch(userinfo({}))}>
+                {/* <Button onClick={() => dispatch({type : userinfo(), payload: user_status})}></Button> */}
+                <Button onClick={() => dispatch(userinfo(user_status))}>
+                {/* <Button onClick={ClickButton}> */}
                     추천 받기
                 </Button>
                 <Button onClick={resetButton}>

@@ -21,9 +21,13 @@ export const userSlice = createSlice({
     name : 'userSlice',
     initialState,
     reducers: {
-        userinfo: (state , action:PayloadAction) => {
-            console.log(state)
-            console.log(action)
+        userinfo: (state=initialState , action:PayloadAction<any>) => {
+            return {...state , 
+                personal : action.payload.personal,
+                mood : action.payload.mood,
+                place : action.payload.place,
+                is_korean : action.payload.is_korean
+             }
         }
     }
 })

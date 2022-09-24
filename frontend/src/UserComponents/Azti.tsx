@@ -8,12 +8,16 @@ import  Grid  from "@mui/material/Grid"
 // Components
 import AztiQuestion from "./AztiQuestion"
 
-import react , { useEffect} from 'react'
+import react , { useEffect , useCallback } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from "../userStore/store"
 
 function Azti () {
-  useEffect(() => {
 
+  useEffect(() => {
+    // useSelector((state : RootState) => state.userazti)
   },[])
+
 
     return(
       <div>
@@ -25,8 +29,9 @@ function Azti () {
           justifyContent="center"
         >
           <img src={azti_img} alt="logo" width="100%"/>
-          
-          <AztiQuestion/>
+          <div>
+            <AztiQuestion/>
+          </div>
 
           </Grid>
       </div>
