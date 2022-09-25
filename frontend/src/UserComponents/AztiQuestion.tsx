@@ -30,6 +30,7 @@ function AztiQuestion() {
     },[])
 
     const SelectUserAzti = useSelector((state : RootState) => state.userazti)
+    console.log(SelectUserAzti)
 
     useEffect(() => {
     },[])

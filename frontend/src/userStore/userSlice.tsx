@@ -7,6 +7,7 @@ export interface AztiState {
     mood : string,
     place : string,
     drinking : string,
+    user_azti : string,
     user_azti_type : string
 }
 
@@ -35,6 +36,7 @@ const initialState : AztiState = {
     mood : '',
     place : '',
     drinking : '',
+    user_azti : '',
     user_azti_type : ''
 }
 
@@ -72,7 +74,7 @@ const koreanAztiType = {
     dchc : '현실 알뜰 힙스터 술린이',
     mnhc : '감성 호탕 힙스터 술린이',
     dnhc : '현실 호탕 힙스터 술린이',
-    mcic : '감속 알뜰 인싸 술린이',
+    mcic : '감성 알뜰 인싸 술린이',
     dcic : '현실 알뜰 인싸 술린이',
     mnic : '감성 호탕 인싸 술린이',
     dnic : '현실 호탕 인싸 술린이'
@@ -98,6 +100,7 @@ export const userSlice = createSlice({
                                 mood : action.payload.mood,
                                 place : action.payload.place,
                                 drinking : action.payload.drinking,
+                                user_azti : user,
                                 user_azti_type : korean_azti
                             }
                         }
