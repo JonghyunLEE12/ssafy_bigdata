@@ -30,26 +30,24 @@ function AztiQuestion() {
     },[])
 
     const SelectUserAzti = useSelector((state : RootState) => state.userazti)
-    console.log(SelectUserAzti)
 
     useEffect(() => {
-        // useSelector((state : RootState) => state.userazti)
     },[])
-    const dispatch = useDispatch()
+    
     type azti = {
-        personal : string,
+        cost_effective : string,
         mood : string,
         place : string,
-        is_korean : string
+        drinking : string
     }
     const user_azti : azti = {
-        personal : '',
+        cost_effective : '',
         mood : '',
         place : '',
-        is_korean : ''
-    }
-
-
+        drinking : ''
+    }  
+    
+    const dispatch = useDispatch()
     const [ question_parameter , setParameter ] = useState<number>(1)
     const [value, setValue] = React.useState('');
     const [ user_status , setUserazti] = useState<azti>(user_azti)
@@ -67,7 +65,7 @@ function AztiQuestion() {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if ( question_parameter === 1 ){
-            user_status.personal = value
+            user_status.cost_effective = value
             // 숫자 증가
             buttonClick()
             // buttonCheck 초기화
@@ -88,11 +86,12 @@ function AztiQuestion() {
             setButtonCheck((event) => event = 0)
 
         } else if (question_parameter === 4) {
-            user_status.is_korean = value
+            user_status.drinking = value
             // 숫자 증가
             buttonClick()
             // buttonCheck 초기화
             setButtonCheck((event) => event = 0)
+            dispatch(userinfo(user_status))
 
         } else if ( question_parameter === 5) {
             console.log('hi')
@@ -122,7 +121,7 @@ function AztiQuestion() {
                 <form onSubmit={handleSubmit}>
                 <FormControl sx={{ m: 3 }} variant="standard">
                     <FormLabel id="demo-error-radios">
-                    <h1 className="text-orange-2"> 나는 닭갈비를 먹으러 춘천에 갈 수 있다. </h1>
+                    <h1 className="text-orange-2"> 유명한 식당이라면, 가격이 비싸도 상관 없다 . </h1>
                     </FormLabel>
                     <RadioGroup
                     aria-labelledby="demo-error-radios"
@@ -130,8 +129,8 @@ function AztiQuestion() {
                     value={value}
                     onChange={handleRadioChange}
                     >
-                    <FormControlLabel value="emotion" control={<Radio />} label={<h3 className="text-blue-1">예-스</h3>} />
-                    <FormControlLabel value="real" control={<Radio />}  label={<h3 className="text-blue-1">노-우</h3>} />
+                    <FormControlLabel value="cost_effective" control={<Radio />} label={<h3 className="text-blue-1">예-스</h3>} />
+                    <FormControlLabel value="none_cost_effective" control={<Radio />}  label={<h3 className="text-blue-1">노-우</h3>} />
                     </RadioGroup>
                     <Button sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
                     제출하기
@@ -208,7 +207,7 @@ function AztiQuestion() {
                 <form onSubmit={handleSubmit}>
                 <FormControl sx={{ m: 3 }} variant="standard">
                     <FormLabel id="demo-error-radios">
-                    <h1 className="text-orange-2"> 현재 매우 배가고픈 당신, 눈앞에 있는 두 가게 중 당신의 선택은? </h1>
+                    <h1 className="text-orange-2"> 쌀쌀한 날씨에 뜨끈한 된장찌개와 솥뚜껑 삼겹살 </h1>
                     </FormLabel>
                     <RadioGroup
                     aria-labelledby="demo-error-radios"
@@ -216,8 +215,8 @@ function AztiQuestion() {
                     value={value}
                     onChange={handleRadioChange}
                     >
-                    <FormControlLabel value="korean" control={<Radio />} label={<h3 className="text-blue-1">처음 보는 상표의 국밥집.</h3>} />
-                    <FormControlLabel value="alien" control={<Radio />} label={<h3 className="text-blue-1">기본적인 맛이 보장되어 있는 패스트푸드점</h3>} />
+                    <FormControlLabel value="soju" control={<Radio />} label={<h3 className="text-blue-1">이모 소주 하나 주세요!</h3>} />
+                    <FormControlLabel value="coke" control={<Radio />} label={<h3 className="text-blue-1">이모 콜라 하나 주세요!</h3>} />
                     </RadioGroup>
                     <Button sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
                     제출하기
@@ -231,27 +230,16 @@ function AztiQuestion() {
             </div>
         )
     } else if ( question_parameter === 5) {
-        // const ClickButton = useEffect(() => {
-        //     const sendUserAzti = () => {
-        //         dispatch(userinfo(user_status))
-        //     }
-        //     sendUserAzti()
-        // },[])
-        // const sendUserAzti = () => {
-        //     dispatch(userinfo(user_status))
-        // }
+
         return (
             <div>
                 <h1>결과</h1>
-                <h3>{user_status.personal}</h3>
-                <h3>{user_status.mood}</h3>
-                <h3>{user_status.place}</h3>
-                <h3>{user_status.is_korean}</h3>
-                <h3>아재</h3>
+                <h3> 당신은 {SelectUserAzti.user_azti_type}</h3>
+                <h3>아재 입니다!</h3>
 
                 {/* <Button onClick={() => dispatch({type : userinfo(), payload: user_status})}></Button> */}
-                <Button onClick={() => dispatch(userinfo(user_status))}>
-                {/* <Button onClick={ClickButton}> */}
+                {/* <Button onClick={() => dispatch(userinfo(user_status))}> */}
+                <Button>
                     추천 받기
                 </Button>
                 <Button onClick={resetButton}>
