@@ -1,25 +1,25 @@
 // Images
-import mainLogo from "../../assets/main_logo.png"
-import feZero from "../../assets/feZero.jpg"
-import kakaoBtn from "../../assets/kakao_login_btn.png"
+import mainLogo from "../../assets/main_logo.png";
+import feZero from "../../assets/feZero.jpg";
+import kakaoBtn from "../../assets/kakao_login_btn.png";
 
 // MUI
-import Grid from "@mui/material/Grid"
-import Box from "@mui/material/Box"
-import { Link } from "react-router-dom"
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import { Link } from "react-router-dom";
 
 export default function StartPage() {
   // 상단 오렌지색 수평선
   const topAreaStyle = {
-    padding: "0px 5px",
-    margin: "44px 0px 132px 0px",
+    paddingTop: "5vh",
+    marginBottom: "5vh",
     borderBottom: "2px solid rgb(216, 99, 69)",
-  }
+  };
 
-  // 카카오로그인
   const REST_API_KEY = "4451e1614fc6653da21821b099437e5a";
   const REDIRECT_URI = "http://localhost:5173/oauth/kakao/callback";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
   return (
     <>
       {/* 상단 오렌지색 수평선 */}
@@ -40,5 +40,5 @@ export default function StartPage() {
         </a>
       </Grid>
     </>
-  )
+  );
 }
