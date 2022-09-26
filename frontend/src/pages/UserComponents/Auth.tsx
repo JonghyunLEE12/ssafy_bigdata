@@ -13,18 +13,6 @@ function Auth() {
   // 인가코드
   console.log(code);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const res = await axios.get("http://localhost:8080/api/oauth/login/kakao/"+code);
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-  //   })();
-  // }, []);
-
-
-  const url2 = "https://api.upbit.com/v1/candles/days?market=KRW-BTC&count=2"
 
   axios.get(url+code)
   .then((res) => {

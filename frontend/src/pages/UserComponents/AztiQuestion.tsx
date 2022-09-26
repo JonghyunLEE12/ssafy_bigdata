@@ -18,16 +18,33 @@ import { useSelector , useDispatch } from 'react-redux'
 import {RootState} from '../userStore/store'
 import { userinfo } from "../userStore/userSlice"
 
+// components
+import KakaoShareButton from "./KakaoShareButton";
+
+
 // 결과 만 백엔드로 보내줄 것
 
 
 function AztiQuestion() {
+    const dispatch = useDispatch()
+
+    // useEffect
     useEffect(() => {
         const sendUserAzti = () => {
             dispatch(userinfo(user_status))
         }
         sendUserAzti()
     },[])
+
+    useEffect(() => {
+        const script = document.createElement('script')
+        script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
+        script.async = true
+        document.body.appendChild(script)
+        return () => {
+          document.body.removeChild(script)
+        }
+      }, [])
 
     const SelectUserAzti = useSelector((state : RootState) => state.userazti)
     console.log(SelectUserAzti)
@@ -46,9 +63,9 @@ function AztiQuestion() {
         mood : '',
         place : '',
         drinking : ''
-    }  
+    }
     
-    const dispatch = useDispatch()
+    
     const [ question_parameter , setParameter ] = useState<number>(1)
     const [value, setValue] = React.useState('');
     const [ user_status , setUserazti] = useState<azti>(user_azti)
@@ -236,7 +253,12 @@ function AztiQuestion() {
             <div>
                 <h1>결과</h1>
                 <h3> 당신은 {SelectUserAzti.user_azti_type}</h3>
+                <img 
+                src={`src/pages/UserComponents/assets/azti_pic/${SelectUserAzti.user_azti}.png`}
+                id="user-azti" 
+                alt="user_azti"/>
                 <h3>아재 입니다!</h3>
+                <h6> - 출저 : 그림왕 양치기 -</h6>
 
                 {/* <Button onClick={() => dispatch({type : userinfo(), payload: user_status})}></Button> */}
                 {/* <Button onClick={() => dispatch(userinfo(user_status))}> */}
@@ -246,6 +268,7 @@ function AztiQuestion() {
                 <Button onClick={resetButton}>
                     다시하기
                 </Button>
+                <KakaoShareButton />
             </div>
         )
     }
