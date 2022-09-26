@@ -1,7 +1,13 @@
 // Images
+<<<<<<< HEAD
 import mainLogo from "../../assets/main_logo.png";
 import feZero from "../../assets/feZero.jpg";
 import kakaoBtn from "../../assets/kakao_login_btn.png";
+=======
+import mainLogo from "../../assets/Logo.png"
+import feZero from "../../assets/feZero.jpg"
+import kakaoBtn from "../../assets/kakao_login_btn.png"
+>>>>>>> 12cd0f118c6e7d8f95809a88681b20b7e4459469
 
 // MUI
 import Grid from "@mui/material/Grid";
