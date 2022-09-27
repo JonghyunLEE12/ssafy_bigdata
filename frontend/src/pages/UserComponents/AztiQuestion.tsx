@@ -268,6 +268,8 @@ function AztiQuestion() {
                 <Button onClick={resetButton}>
                     다시하기
                 </Button>
+                
+                {/* 카카오 공유 하기 부분  */}
                 <KakaoShareButton />
             </div>
         )

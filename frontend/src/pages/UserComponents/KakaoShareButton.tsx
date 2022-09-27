@@ -30,11 +30,6 @@ const KakaoShareButton = () => {
                     webUrl : window.location.href
                 }
             },
-            // social: {
-            //     likeCount: 77,
-            //     commentCount: 55,
-            //     sharedCount: 333,
-            // },
             buttons: [
                 {
                   title: '나는 어떤 아재 일까?',
