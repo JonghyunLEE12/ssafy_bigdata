@@ -17,6 +17,7 @@ import { ConstructionOutlined } from "@mui/icons-material";
 import { useSelector , useDispatch } from 'react-redux'
 import {RootState} from '../userStore/store'
 import { userinfo } from "../userStore/userSlice"
+import { useNavigate } from "react-router-dom";
 
 // components
 import KakaoShareButton from "./KakaoShareButton";
@@ -27,6 +28,7 @@ import KakaoShareButton from "./KakaoShareButton";
 
 function AztiQuestion() {
     const dispatch = useDispatch()
+    const navigate = useNavigate();
 
     // useEffect
     useEffect(() => {
@@ -48,6 +50,11 @@ function AztiQuestion() {
 
     const SelectUserAzti = useSelector((state : RootState) => state.userazti)
     console.log(SelectUserAzti)
+
+    // console.log('here')
+    // const Userinfo = useSelector((state : RootState) => state.userazti)
+    // console.log(Userinfo)
+
 
     useEffect(() => {
     },[])
@@ -248,6 +255,9 @@ function AztiQuestion() {
             </div>
         )
     } else if ( question_parameter === 5) {
+        const buttonToMain = () => {
+            navigate('/main')
+        }
 
         return (
             <div>
@@ -262,7 +272,7 @@ function AztiQuestion() {
 
                 {/* <Button onClick={() => dispatch({type : userinfo(), payload: user_status})}></Button> */}
                 {/* <Button onClick={() => dispatch(userinfo(user_status))}> */}
-                <Button>
+                <Button onClick={buttonToMain}>
                     추천 받기
                 </Button>
                 <Button onClick={resetButton}>
