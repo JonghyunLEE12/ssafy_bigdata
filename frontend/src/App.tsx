@@ -15,9 +15,23 @@ import Azti from "./pages/UserComponents/Azti"
 import isLogin from "./pages/UserComponents/isLogin"
 import PrivateRoute from "./PrivateRoute"
 
+// Mui
+import { createTheme , ThemeProvider } from "@mui/system";
+// import { MuiThemeProvider, createMuiTheme } from "@mu"
+
+
 function App() {
+  // muiTheme
+  const theme = createTheme({
+    typography: {
+        fontFamily: "BMEULJIRO"
+    }
+  })
+  console.log(theme)
   console.log(isLogin())
   return (
+    // <ThemeProvider theme={theme}>
+    // </ThemeProvider>
     <Router>
       <Routes>
         {/* 인증 여부 상관 없이 접속 가능한 페이지 정의 */}
@@ -33,6 +47,7 @@ function App() {
           <Route path="/restos/:restoId" element={<DetailPage />} />
           <Route path="/need-confirm" element={<NeedConfirm />} />
           <Route path="/azti" element={<Azti/>} />
+          <Route path="*" element={startPage()} />
         </Route>
       </Routes>
       {bottomBar()}

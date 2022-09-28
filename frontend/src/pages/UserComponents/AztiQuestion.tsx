@@ -28,7 +28,8 @@ import KakaoShareButton from "./KakaoShareButton";
 
 function AztiQuestion() {
     const dispatch = useDispatch()
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+
 
     // useEffect
     useEffect(() => {
@@ -140,6 +141,7 @@ function AztiQuestion() {
     if ( question_parameter === 1) {
         return(
             <div>
+                <br />
                 <h1 className="text-yellow-1"> 퀘-스챤 1</h1>
 
                 {/* azti question form */}
@@ -180,7 +182,7 @@ function AztiQuestion() {
                     value={value}
                     onChange={handleRadioChange}
                     >
-                    <FormControlLabel value="moist" control={<Radio />} label={<h3 className="text-blue-1">파전에 막걸리!</h3>} />
+                    <FormControlLabel value="moist" control={<Radio color="primary"/>} label={<h3 className="text-blue-1">파전에 막걸리!</h3>} />
                     <FormControlLabel value="dry" control={<Radio />} label={<h3 className="text-blue-1">집에 가기 힘들겠다..</h3>} />
                     </RadioGroup>
                     <Button sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>

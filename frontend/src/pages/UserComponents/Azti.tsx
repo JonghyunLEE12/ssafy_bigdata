@@ -1,5 +1,5 @@
 // Image
-import azti_img from "../UserComponents/assets/azti_img.png"
+import azti_img from "./assets/azti_img.png"
 // import azti_img from "./assets/azti_pic/azti_img.png"
 
 // MUI
