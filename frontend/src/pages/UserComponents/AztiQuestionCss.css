@@ -33,6 +33,13 @@
     -webkit-text-stroke: 0.01rem green;
     margin: 5px;
   }
+  .text-yellow-2 {
+    color: rgb(254, 192, 41);
+    font-size: 1rem;
+    font-weight: bold;
+    -webkit-text-stroke: 0.01rem green;
+    margin: 5px;
+  }
   
   .text-orange-1 {
     color: rgb(216, 99, 69);
@@ -46,11 +53,24 @@
     text-shadow: 0.1rem 0.1rem 0.1em grey;
     font-weight: bold;
   }
+  .text-orange-3 {
+    color: rgb(216, 99, 69);
+    font-size: 1.3rem;
+    text-shadow: 0.1rem 0.1rem 0.1em grey;
+    font-weight: bold;
+  }
+
+  .text-orange-4 {
+    color: rgb(216, 99, 69);
+    font-size: 1.3rem;
+    /* text-shadow: 0.1rem 0.1rem 0.1em grey; */
+    font-weight: bold;
+  }
   
   .text-blue-1 {
     color: rgb(77, 152, 182);
-    font-size: 2rem;
-    text-shadow: 0.1rem 0.1rem 0.1em grey;
+    font-size: 1.2rem;
+    /* text-shadow: 0.1rem 0.1rem 0.1em grey; */
     text-align: left;
   }
   
@@ -61,6 +81,11 @@
   }
   
   #user-azti{
+    width : 300px;
+    height : 300px;
+  }
+
+  #question_img{
     width : 300px;
     height : 300px;
   }

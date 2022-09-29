@@ -93,6 +93,25 @@ const koreanAztiType = {
     mnic : '감성 호탕 인싸 술린이',
     dnic : '현실 호탕 인싸 술린이'
 }
+// 중앙에 저장하지 말고 다 쓴 뒤에 AztiQuestion으로 이동해서 사용하자
+const koreanAztiTypeDescription = {
+    mcis : '집 앞 포장마차',
+    dcis : '심야식당',
+    mnis : '만선호프',
+    dnis : '현실 호탕 인싸 주당',
+    mchs : '감성 알뜰 힙스터 주당',
+    dchs : '현실 알뜰 힙스터 주당',
+    mnhs : '감성 호탕 힙스터 주당',
+    dnhs : '현실 호탕 힙스터 주당',
+    mchc : '감성 알뜰 힙스터 술린이',
+    dchc : '현실 알뜰 힙스터 술린이',
+    mnhc : '감성 호탕 힙스터 술린이',
+    dnhc : '현실 호탕 힙스터 술린이',
+    mcic : '감성 알뜰 인싸 술린이',
+    dcic : '현실 알뜰 인싸 술린이',
+    mnic : '감성 호탕 인싸 술린이',
+    dnic : '현실 호탕 인싸 술린이'
+}
 export const userStateSlice = createSlice({
     name : 'userStateSlice',
     initialState : userState,
@@ -120,6 +139,8 @@ export const userSlice = createSlice({
                 if ( Object.keys(aztiType)[i] == search_user){
                     // 유저의 azti 를 받아오는 부분
                     let user = Object.values(aztiType)[i]
+                    console.log('here')
+                    console.log(user)
 
                     for ( let j = 0 ; j < 17; j ++){
                         if (Object.keys(koreanAztiType)[i] == user) {

@@ -1,6 +1,6 @@
 // MUI
 import Button from "@mui/material/Button"
-// import kakaoBtn from "../../assets/kakao_login_btn.png";
+// import KakaoShareBtn from "./assets/azti_pic/KakaoShareButton.png"
 
 import react , { useEffect } from 'react'
 import { useSelector } from 'react-redux'
@@ -43,6 +43,7 @@ const KakaoShareButton = () => {
     }
     return (
         <div className="kakao-share-button">
+            {/* <img src={KakaoShareBtn} alt="" /> */}
             <Button
             id='kakao_share_btn'
             onClick={createKakaoButton}>

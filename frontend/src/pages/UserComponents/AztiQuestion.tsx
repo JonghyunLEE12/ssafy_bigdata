@@ -1,11 +1,13 @@
 // MUI
 import Button from "@mui/material/Button"
-import Radio from '@mui/material/Radio';
+import Radio , { RadioProps } from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
+import  Grid  from "@mui/material/Grid"
+
 
 
 // CSS
@@ -52,9 +54,15 @@ function AztiQuestion() {
     const SelectUserAzti = useSelector((state : RootState) => state.userazti)
     console.log(SelectUserAzti)
 
-    // console.log('here')
-    // const Userinfo = useSelector((state : RootState) => state.userazti)
-    // console.log(Userinfo)
+    // Radio button style
+    function BpRadio(props: RadioProps) {
+        return (
+          <Radio
+            color="secondary"
+            {...props}
+          />
+        );
+      }
 
 
     useEffect(() => {
@@ -143,12 +151,14 @@ function AztiQuestion() {
             <div>
                 <br />
                 <h1 className="text-yellow-1"> 퀘-스챤 1</h1>
-
+                <br/>
+                <img src={'https://aztipictures.s3.ap-northeast-2.amazonaws.com/azti_pic/'+question_parameter+'.png'} alt=""
+                id="question_img" />
                 {/* azti question form */}
                 <form onSubmit={handleSubmit}>
                 <FormControl sx={{ m: 3 }} variant="standard">
                     <FormLabel id="demo-error-radios">
-                    <h1 className="text-orange-2"> 유명한 식당이라면, 가격이 비싸도 상관 없다 . </h1>
+                    <h1 className="text-orange-2"> 유명한 식당이라면, <br/>가격이 비싸도 상관 없다 . </h1>
                     </FormLabel>
                     <RadioGroup
                     aria-labelledby="demo-error-radios"
@@ -156,12 +166,20 @@ function AztiQuestion() {
                     value={value}
                     onChange={handleRadioChange}
                     >
-                    <FormControlLabel value="cost_effective" control={<Radio />} label={<h3 className="text-blue-1">예-스</h3>} />
-                    <FormControlLabel value="none_cost_effective" control={<Radio />}  label={<h3 className="text-blue-1">노-우</h3>} />
+                    <FormControlLabel value="cost_effective" control={<BpRadio />} label={<h3 className="text-blue-1">예-스</h3>} />
+                    <FormControlLabel value="none_cost_effective" control={<BpRadio />}  label={<h3 className="text-blue-1">노-우</h3>} />
                     </RadioGroup>
-                    <Button sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
-                    제출하기
-                    </Button>
+                    <Grid
+                    container
+                    display="flex"
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="center"
+                    >
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
+                            <span>다음 질문</span>
+                        </Button>
+                    </Grid>
                 </FormControl>
                 </form>
             </div>
@@ -169,12 +187,16 @@ function AztiQuestion() {
     } else if ( question_parameter === 2) {
         return (
             <div>
+                <br />
                 <h1 className="text-yellow-1"> 퀘-스챤 2</h1>
+                <br/>
+                <img src={'https://aztipictures.s3.ap-northeast-2.amazonaws.com/azti_pic/'+question_parameter+'.png'} alt=""
+                id="question_img" />
                 {/* azti question form */}
                 <form onSubmit={handleSubmit}>
                 <FormControl sx={{ m: 3 }} variant="standard">
                     <FormLabel id="demo-error-radios">
-                    <h1 className="text-orange-2"> 일을 하던 도중, 비가오는 상황이다. 다음 중 생각나는 것은? </h1>
+                    <h1 className="text-orange-2"> 일을 하던 도중 비가오는 상황!<br/> 다음 중 생각나는 것은? </h1>
                     </FormLabel>
                     <RadioGroup
                     aria-labelledby="demo-error-radios"
@@ -182,15 +204,23 @@ function AztiQuestion() {
                     value={value}
                     onChange={handleRadioChange}
                     >
-                    <FormControlLabel value="moist" control={<Radio color="primary"/>} label={<h3 className="text-blue-1">파전에 막걸리!</h3>} />
-                    <FormControlLabel value="dry" control={<Radio />} label={<h3 className="text-blue-1">집에 가기 힘들겠다..</h3>} />
+                    <FormControlLabel value="moist" control={<BpRadio/>} label={<h3 className="text-blue-1">파전에 막걸리!</h3>} />
+                    <FormControlLabel value="dry" control={<BpRadio/>} label={<h3 className="text-blue-1">집에 가기 힘들겠다..</h3>} />
                     </RadioGroup>
-                    <Button sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
-                    제출하기
-                    </Button>
-                    <Button sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
-                    뒤로가기
-                    </Button>
+                    <Grid
+                    container
+                    display="flex"
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="center"
+                    >
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
+                        다음 질문
+                        </Button>
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
+                        이전 질문
+                        </Button>
+                    </Grid>
                 </FormControl>
                 </form>
             </div>
@@ -198,12 +228,16 @@ function AztiQuestion() {
     } else if ( question_parameter === 3) {
         return (
             <div>
+                <br />
                 <h1 className="text-yellow-1"> 퀘-스챤 3</h1>
+                <br/>
+                <img src={'https://aztipictures.s3.ap-northeast-2.amazonaws.com/azti_pic/'+question_parameter+'.png'} alt=""
+                id="question_img" />
                 {/* azti question form */}
                 <form onSubmit={handleSubmit}>
                 <FormControl sx={{ m: 3 }} variant="standard">
                     <FormLabel id="demo-error-radios">
-                    <h1 className="text-orange-2"> 동네에서 새로운 맛집을 발견했다! 당신의 선택은? </h1>
+                    <h1 className="text-orange-3"> 동네에서 새로운 맛집을 발견했다!<br/> 당신의 선택은? </h1>
                     </FormLabel>
                     <RadioGroup
                     aria-labelledby="demo-error-radios"
@@ -211,15 +245,23 @@ function AztiQuestion() {
                     value={value}
                     onChange={handleRadioChange}
                     >
-                    <FormControlLabel value="hipster" control={<Radio />} label={<h3 className="text-blue-1">친한 친구들에게만 알려준다.</h3>} />
-                    <FormControlLabel value="insider" control={<Radio />} label={<h3 className="text-blue-1">인스타에 공유에 모두에게 알려준다.</h3>} />
+                    <FormControlLabel value="hipster" control={<BpRadio />} label={<h3 className="text-blue-1">나만 아는 맛집으로 둔다.</h3>} />
+                    <FormControlLabel value="insider" control={<BpRadio />} label={<h3 className="text-blue-1">인스타에 공유 한다.</h3>} />
                     </RadioGroup>
-                    <Button sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
-                    제출하기
-                    </Button>
-                    <Button sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
-                    뒤로가기
-                    </Button>
+                    <Grid
+                    container
+                    display="flex"
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="center"
+                    >
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
+                        다음 질문
+                        </Button>
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
+                        이전 질문
+                        </Button>
+                    </Grid>
                 </FormControl>
                 </form>
 
@@ -228,13 +270,16 @@ function AztiQuestion() {
     } else if ( question_parameter === 4) {
         return (
             <div>
+                <br />
                 <h1 className="text-yellow-1"> 퀘-스챤 4</h1>
-                <h3 className="text-orange-2"> 질문 </h3>
+                <br/>
+                <img src={'https://aztipictures.s3.ap-northeast-2.amazonaws.com/azti_pic/'+question_parameter+'.png'} alt=""
+                id="question_img" />
                 {/* azti question form */}
                 <form onSubmit={handleSubmit}>
                 <FormControl sx={{ m: 3 }} variant="standard">
                     <FormLabel id="demo-error-radios">
-                    <h1 className="text-orange-2"> 쌀쌀한 날씨에 뜨끈한 된장찌개와 솥뚜껑 삼겹살 </h1>
+                    <h1 className="text-orange-3"> 쌀쌀한 날씨에 <br/>뜨끈한 된장찌개와 솥뚜껑 삼겹살 </h1>
                     </FormLabel>
                     <RadioGroup
                     aria-labelledby="demo-error-radios"
@@ -242,15 +287,23 @@ function AztiQuestion() {
                     value={value}
                     onChange={handleRadioChange}
                     >
-                    <FormControlLabel value="soju" control={<Radio />} label={<h3 className="text-blue-1">이모 소주 하나 주세요!</h3>} />
-                    <FormControlLabel value="coke" control={<Radio />} label={<h3 className="text-blue-1">이모 콜라 하나 주세요!</h3>} />
+                    <FormControlLabel value="soju" control={<BpRadio />} label={<h3 className="text-blue-1">이모 소주 하나 주세요!</h3>} />
+                    <FormControlLabel value="coke" control={<BpRadio />} label={<h3 className="text-blue-1">이모 콜라 하나 주세요!</h3>} />
                     </RadioGroup>
-                    <Button sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
-                    제출하기
-                    </Button>
-                    <Button sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
-                    뒤로가기
-                    </Button>
+                    <Grid
+                    container
+                    display="flex"
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="center"
+                    >
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
+                        결과 보기
+                        </Button>
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
+                        뒤로가기
+                        </Button>
+                    </Grid>
                 </FormControl>
                 </form>
 
@@ -263,21 +316,22 @@ function AztiQuestion() {
 
         return (
             <div>
-                <h1>결과</h1>
-                <h3> 당신은 {SelectUserAzti.user_azti_type}</h3>
+                <h1 className="text-yellow-1" >결과</h1>
+                <h3 className="text-orange-4"> 당신은 </h3>
+                <h3 className="text-orange-3">{SelectUserAzti.user_azti_type}</h3>
                 <img 
                 src={`src/pages/UserComponents/assets/azti_pic/${SelectUserAzti.user_azti}.png`}
                 id="user-azti" 
                 alt="user_azti"/>
-                <h3>아재 입니다!</h3>
-                <h6> - 출저 : 그림왕 양치기 -</h6>
+                <h3 className="text-orange-4" >아재</h3>
+                <h6 color="secondary"> - 출저 : 그림왕 양치기 -</h6>
 
                 {/* <Button onClick={() => dispatch({type : userinfo(), payload: user_status})}></Button> */}
                 {/* <Button onClick={() => dispatch(userinfo(user_status))}> */}
-                <Button onClick={buttonToMain}>
+                <Button color="secondary" onClick={buttonToMain}>
                     추천 받기
                 </Button>
-                <Button onClick={resetButton}>
+                <Button color="secondary" onClick={resetButton}>
                     다시하기
                 </Button>
                 

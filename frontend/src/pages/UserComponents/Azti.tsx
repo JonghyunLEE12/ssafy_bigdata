@@ -30,7 +30,8 @@ function Azti () {
         >
           <img src={azti_img} alt="logo" width="100%"/>
           <div>
-            <AztiQuestion/>
+            {AztiQuestion()}
+            {/* <AztiQuestion/> */}
           </div>
 
           </Grid>
