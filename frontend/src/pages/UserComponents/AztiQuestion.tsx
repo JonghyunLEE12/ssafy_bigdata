@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
 import  Grid  from "@mui/material/Grid"
+import ReplayIcon from '@mui/icons-material/Replay';
 
 
 
@@ -166,8 +167,8 @@ function AztiQuestion() {
                     value={value}
                     onChange={handleRadioChange}
                     >
-                    <FormControlLabel value="cost_effective" control={<BpRadio />} label={<h3 className="text-blue-1">예-스</h3>} />
-                    <FormControlLabel value="none_cost_effective" control={<BpRadio />}  label={<h3 className="text-blue-1">노-우</h3>} />
+                    <FormControlLabel value="none_cost_effective" control={<BpRadio />} label={<h3 className="text-blue-1">예-스</h3>} />
+                    <FormControlLabel value="cost_effective" control={<BpRadio />}  label={<h3 className="text-blue-1">노-우</h3>} />
                     </RadioGroup>
                     <Grid
                     container
@@ -323,20 +324,29 @@ function AztiQuestion() {
                 src={`src/pages/UserComponents/assets/azti_pic/${SelectUserAzti.user_azti}.png`}
                 id="user-azti" 
                 alt="user_azti"/>
-                <h3 className="text-orange-4" >아재</h3>
                 <h6 color="secondary"> - 출저 : 그림왕 양치기 -</h6>
+                <h3 className="text-orange-4" >아재</h3>
+                
 
                 {/* <Button onClick={() => dispatch({type : userinfo(), payload: user_status})}></Button> */}
                 {/* <Button onClick={() => dispatch(userinfo(user_status))}> */}
-                <Button color="secondary" onClick={buttonToMain}>
+                {/* 카카오 공유 하기 부분  */}
+                <Grid
+                    container
+                    display="flex"
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="center"
+                >
+                    <KakaoShareButton />
+                    <Button color="secondary" onClick={resetButton}>
+                        <ReplayIcon/>
+                    </Button>
+                </Grid>
+                <br />
+                <Button variant="contained" color="secondary" onClick={buttonToMain}>
                     추천 받기
                 </Button>
-                <Button color="secondary" onClick={resetButton}>
-                    다시하기
-                </Button>
-                
-                {/* 카카오 공유 하기 부분  */}
-                <KakaoShareButton />
             </div>
         )
     }

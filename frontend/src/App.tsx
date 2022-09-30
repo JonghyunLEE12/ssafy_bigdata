@@ -17,6 +17,7 @@ import PrivateRoute from "./PrivateRoute"
 
 // Mui
 import { createTheme , ThemeProvider } from "@mui/material";
+import { orange } from "@mui/material/colors";
 
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
   const theme = createTheme({
     palette:{
       secondary : {
-        main: "rgb(77, 152, 182)"
+        main: "rgb(77, 152, 182)",
+        light : "#ff9100"
       }
     },
     typography: {
