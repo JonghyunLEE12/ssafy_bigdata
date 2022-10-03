@@ -340,8 +340,8 @@ function AztiQuestion() {
                     value={value}
                     onChange={handleRadioChange}
                     >
-                    <FormControlLabel value="soju" control={<BpRadio />} label={<h3 className="text-blue-1">"짠!" 하니까!</h3>} />
-                    <FormControlLabel value="coke" control={<BpRadio />} label={<h3 className="text-blue-1">음...글쎄요...</h3>} />
+                    <FormControlLabel value="q5_1" control={<BpRadio />} label={<h3 className="text-blue-1">"짠!" 하니까!</h3>} />
+                    <FormControlLabel value="q5_2" control={<BpRadio />} label={<h3 className="text-blue-1">음...글쎄요...</h3>} />
                     </RadioGroup>
                     <Grid
                     container
@@ -382,8 +382,8 @@ function AztiQuestion() {
                     value={value}
                     onChange={handleRadioChange}
                     >
-                    <FormControlLabel value="soju" control={<BpRadio />} label={<h3 className="text-blue-1">너무 좋은걸요!</h3>} />
-                    <FormControlLabel value="coke" control={<BpRadio />} label={<h3 className="text-blue-1">빨리 가보고 싶어요!</h3>} />
+                    <FormControlLabel value="q6_1" control={<BpRadio />} label={<h3 className="text-blue-1">너무 좋은걸요!</h3>} />
+                    <FormControlLabel value="q6_2" control={<BpRadio />} label={<h3 className="text-blue-1">빨리 가보고 싶어요!</h3>} />
                     </RadioGroup>
                     <Grid
                     container

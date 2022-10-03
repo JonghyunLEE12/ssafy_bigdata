@@ -1,62 +1,52 @@
-import "./App.css";
+import "./App.css"
 
 // Router
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { useState } from "react"
 
-// Pages
-import { mainPage, myPage, startPage,search } from "./pages/pageIndex";
-import NeedConfirm from "./needConfirm/NeedConfirm";
-import DetailPage from "./pages/DetailPage/RestoDetail";
 // Components
-import { bottomBar } from "./pages/pageIndex";
-import Auth from "./pages/UserComponents/Auth";
+import Auth from "./pages/UserComponents/Auth"
 import Azti from "./pages/UserComponents/Azti"
-import isLogin from "./pages/UserComponents/isLogin"
+import BlockPage from "./pages/CommonComp/blockPage"
+import StartPage from "./pages/StartPage/StartPage"
+import IndexPage from "./pages/IndexPage"
 import PrivateRoute from "./PrivateRoute"
 
-// Mui
-import { createTheme , ThemeProvider } from "@mui/material";
-import { orange } from "@mui/material/colors";
-
+import { createTheme, ThemeProvider } from "@mui/material"
 
 function App() {
-  // muiTheme
   const theme = createTheme({
-    palette:{
-      secondary : {
+    palette: {
+      secondary: {
         main: "rgb(77, 152, 182)",
-        light : "#ff9100"
-      }
+        light: "#ff9100",
+      },
     },
     typography: {
-        fontFamily: "BMEULJIRO"
-    }
+      fontFamily: "BMEULJIRO",
+    },
   })
+  const [browserWidth, setBrowserWidth] = useState(window.innerWidth)
+
+  window.addEventListener("resize", () => {
+    setBrowserWidth(window.innerWidth)
+  })
+
   return (
     <ThemeProvider theme={theme}>
+      {browserWidth > 450 && <BlockPage />}
       <Router>
         <Routes>
-          {/* 인증 여부 상관 없이 접속 가능한 페이지 정의 */}
-          <Route index element={startPage()}/>
+          <Route path="/" element={<StartPage />} />
+          <Route path="/azti" element={<Azti />} />
           <Route path="/oauth/kakao/callback" element={<Auth />} />
-
-          {/* 인증을 반드시 해야지만 접속 가능한 페이지 정의 */}
-          <Route element={<PrivateRoute authentication={true}/>}>
-          <Route path="/" element={startPage()} />
-            <Route path="/main" element={mainPage()} />
-            <Route path="/search" element={search()} />
-            <Route path="/my-page" element={myPage()} />
-            <Route path="/restos/:restoId" element={<DetailPage />} />
-            <Route path="/need-confirm" element={<NeedConfirm />} />
-            <Route path="/azti" element={<Azti/>} />
-            <Route path="*" element={startPage()} />
+          <Route element={<PrivateRoute authentication={true} />}>
+            <Route path="/*" element={<IndexPage />} />
           </Route>
         </Routes>
-        {bottomBar()}
       </Router>
     </ThemeProvider>
   )
 }
 
-export default App;
+export default App

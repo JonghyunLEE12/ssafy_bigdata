@@ -1,6 +1,5 @@
 {
   "name": "front",
-  "proxy": "http://localhost:5173/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,24 +14,28 @@
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.5",
     "@reduxjs/toolkit": "^1.8.5",
-    "better-react-carousel": "^1.1.1",
-    "dotenv": "^16.0.2",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.4.0",
-    "sort-by": "^1.2.0"
+    "sass": "^1.55.0",
+    "sort-by": "^1.2.0",
+    "sweetalert2": "^11.4.35"
   },
   "devDependencies": {
-    "@types/node": "^18.7.21",
     "@types/react": "^18.0.17",
+    "@types/react-animations": "^1.0.0",
     "@types/react-dom": "^18.0.6",
+    "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "^2.1.0",
     "axios": "^0.27.2",
     "eslint": "^8.23.1",
-    "typescript": "^4.8.3",
+    "react-animations": "^1.0.0",
+    "react-loader-spinner": "^5.3.4",
+    "styled-components": "^5.3.6",
+    "typescript": "^4.6.4",
     "vite": "^3.1.0"
   }
 }

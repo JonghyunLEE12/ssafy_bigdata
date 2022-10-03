@@ -1,21 +1,27 @@
-import React from "react"
-import { Box } from "@mui/material"
-import RestoInfo from "../../CommonComp/RestoInfo"
-import { Banner as BannerImg } from "../../../assets/imageUrl"
-import Carousel from "better-react-carousel"
+import RoofB from "../../../assets/roofB.png"
+import styled, { keyframes } from "styled-components"
+import { slideInRight } from "react-animations"
 
-const backgroundArea = {
-  width: "100%",
-  marginBottom: "40px",
-  position: "static",
-  backgroundColor: "rgb(103 122 129)",
-}
+const sideRightAnimation = keyframes`${slideInRight}`
+
+const SideRight = styled.div`
+  animation: 1s ${sideRightAnimation};
+  position: relative;
+  top: 5%;
+  z-index: 10;
+`
+
+const BackgroundArea = styled.div`
+  overflow: hidden;
+  position: absolute;
+`
+
 export default function Banner() {
   return (
-    <>
-      <Box sx={backgroundArea}>
-        <BannerImg />
-      </Box>
-    </>
+    <BackgroundArea>
+      <SideRight>
+        <img src={RoofB} width="100%" />
+      </SideRight>
+    </BackgroundArea>
   )
 }

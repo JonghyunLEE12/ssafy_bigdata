@@ -28,7 +28,7 @@ function Azti () {
           alignItems="center"
           justifyContent="center"
         >
-          <img src={azti_img} alt="logo" width="100%"/>
+          <img src={azti_img} alt="logo" width="70%" height="70%"/>
           <div>
             {AztiQuestion()}
             {/* <AztiQuestion/> */}

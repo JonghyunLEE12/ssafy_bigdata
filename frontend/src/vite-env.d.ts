@@ -1,11 +1,5 @@
-interface Window {
-    Kakao : any
-}
+/// <reference types="vite/client" />
 
-// declare global {
-//     interface Window {
-//       Kakao : any
-//     }
-//   }
-  
-//   window.Kakao = window.Kakao || "SomeValue";
+interface Window {
+  Kakao: any;
+}
