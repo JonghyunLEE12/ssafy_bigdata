@@ -129,7 +129,17 @@ function AztiQuestion() {
             dispatch(userinfo(user_status))
 
         } else if ( question_parameter === 5) {
+            buttonClick()
+            // buttonCheck 초기화
+            setButtonCheck((event) => event = 0)
             console.log('hi')
+        } else if ( question_parameter === 6) {
+            buttonClick()
+            // buttonCheck 초기화
+            setButtonCheck((event) => event = 0)
+
+        } else if (question_parameter === 7) {
+
         }
 
     }
@@ -215,11 +225,11 @@ function AztiQuestion() {
                     alignItems="center"
                     justifyContent="center"
                     >
-                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
-                        다음 질문
-                        </Button>
                         <Button color="secondary" sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
                         이전 질문
+                        </Button>
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
+                        다음 질문
                         </Button>
                     </Grid>
                 </FormControl>
@@ -256,11 +266,11 @@ function AztiQuestion() {
                     alignItems="center"
                     justifyContent="center"
                     >
-                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
-                        다음 질문
-                        </Button>
                         <Button color="secondary" sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
                         이전 질문
+                        </Button>
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
+                        다음 질문
                         </Button>
                     </Grid>
                 </FormControl>
@@ -298,11 +308,11 @@ function AztiQuestion() {
                     alignItems="center"
                     justifyContent="center"
                     >
-                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
-                        결과 보기
-                        </Button>
                         <Button color="secondary" sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
                         뒤로가기
+                        </Button>
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
+                        다음 질문
                         </Button>
                     </Grid>
                 </FormControl>
@@ -311,6 +321,91 @@ function AztiQuestion() {
             </div>
         )
     } else if ( question_parameter === 5) {
+        return (
+            <div>
+                <br />
+                <h1 className="text-yellow-1"> 퀘-스챤 5</h1>
+                <br/>
+                <img src={'https://aztipictures.s3.ap-northeast-2.amazonaws.com/azti_pic/'+question_parameter+'.png'} alt=""
+                id="question_img" />
+                {/* azti question form */}
+                <form onSubmit={handleSubmit}>
+                <FormControl sx={{ m: 3 }} variant="standard">
+                    <FormLabel id="demo-error-radios">
+                    <h1 className="text-orange-3"> 술마실 때 눈물이 나는 이유는 <br/> 무엇일까용? </h1>
+                    </FormLabel>
+                    <RadioGroup
+                    aria-labelledby="demo-error-radios"
+                    name="quiz"
+                    value={value}
+                    onChange={handleRadioChange}
+                    >
+                    <FormControlLabel value="soju" control={<BpRadio />} label={<h3 className="text-blue-1">"짠!" 하니까!</h3>} />
+                    <FormControlLabel value="coke" control={<BpRadio />} label={<h3 className="text-blue-1">음...글쎄요...</h3>} />
+                    </RadioGroup>
+                    <Grid
+                    container
+                    display="flex"
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="center"
+                    >
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
+                        뒤로가기
+                        </Button>
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
+                        다음 질문
+                        </Button>
+                    </Grid>
+                </FormControl>
+                </form>
+
+            </div>
+        )
+    } else if ( question_parameter === 6) {
+        return (
+            <div>
+                <br />
+                <h1 className="text-yellow-1"> 퀘-스챤 6</h1>
+                <br/>
+                <img src={'https://aztipictures.s3.ap-northeast-2.amazonaws.com/azti_pic/'+question_parameter+'.png'} alt=""
+                id="question_img" />
+                {/* azti question form */}
+                <form onSubmit={handleSubmit}>
+                <FormControl sx={{ m: 3 }} variant="standard">
+                    <FormLabel id="demo-error-radios">
+                    <h1 className="text-orange-3"> 오늘 '그집 어데고'와 함께 <br/> 노포 탐방 어떠세요? </h1>
+                    </FormLabel>
+                    <RadioGroup
+                    aria-labelledby="demo-error-radios"
+                    name="quiz"
+                    value={value}
+                    onChange={handleRadioChange}
+                    >
+                    <FormControlLabel value="soju" control={<BpRadio />} label={<h3 className="text-blue-1">너무 좋은걸요!</h3>} />
+                    <FormControlLabel value="coke" control={<BpRadio />} label={<h3 className="text-blue-1">빨리 가보고 싶어요!</h3>} />
+                    </RadioGroup>
+                    <Grid
+                    container
+                    display="flex"
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="center"
+                    >
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} onClick={buttonGoback}>
+                        뒤로가기
+                        </Button>
+                        <Button color="secondary" sx={{ mt: 1, mr: 1 }} type="submit" disabled={buttonCheck == 0}>
+                        결과 보기
+                        </Button>
+                    </Grid>
+                </FormControl>
+                </form>
+
+            </div>
+        )
+
+    } else if ( question_parameter === 7) {
         const buttonToMain = () => {
             navigate('/main')
         }
@@ -320,12 +415,12 @@ function AztiQuestion() {
                 <h1 className="text-yellow-1" >결과</h1>
                 <h3 className="text-orange-4"> 당신은 </h3>
                 <h3 className="text-orange-3">{SelectUserAzti.user_azti_type}</h3>
-                <img 
-                src={`src/pages/UserComponents/assets/azti_pic/${SelectUserAzti.user_azti}.png`}
+                <h3 className="text-orange-4" >아재</h3>
+                <img
+                src={'https://aztipictures.s3.ap-northeast-2.amazonaws.com/azti_pic/'+SelectUserAzti.user_azti+'.png'}
                 id="user-azti" 
                 alt="user_azti"/>
                 <h6 color="secondary"> - 출저 : 그림왕 양치기 -</h6>
-                <h3 className="text-orange-4" >아재</h3>
                 
 
                 {/* <Button onClick={() => dispatch({type : userinfo(), payload: user_status})}></Button> */}
