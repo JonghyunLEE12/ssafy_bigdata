@@ -21,6 +21,7 @@ import { useSelector , useDispatch } from 'react-redux'
 import {RootState} from '../userStore/store'
 import { userinfo } from "../userStore/userSlice"
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 // components
 import KakaoShareButton from "./KakaoShareButton";
@@ -406,8 +407,29 @@ function AztiQuestion() {
         )
 
     } else if ( question_parameter === 7) {
+        // localStorage.setItem(
+        //     "userId",
+        //     '2414874219'
+        //   )
+        console.log(SelectUserAzti.user_azti)
+        console.log(typeof(SelectUserAzti.user_azti))
         const buttonToMain = () => {
-            navigate('/main')
+            const hook = () => {
+                axios({
+                    url : 'http://localhost:8080/api/user/azti',
+                    method : 'PATCH',
+                    data : {
+                        aztiType : SelectUserAzti.user_azti
+                    }
+                })
+                .then(response => {
+                    console.log(response)
+                }).catch(err => {
+                    console.log(err)
+                })
+              }
+            hook()
+            // navigate('/main')
         }
 
         return (
