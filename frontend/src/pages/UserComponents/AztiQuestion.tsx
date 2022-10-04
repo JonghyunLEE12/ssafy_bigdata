@@ -54,7 +54,6 @@ function AztiQuestion() {
       }, [])
 
     const SelectUserAzti = useSelector((state : RootState) => state.userazti)
-    console.log(SelectUserAzti)
 
     // Radio button style
     function BpRadio(props: RadioProps) {
@@ -133,7 +132,6 @@ function AztiQuestion() {
             buttonClick()
             // buttonCheck 초기화
             setButtonCheck((event) => event = 0)
-            console.log('hi')
         } else if ( question_parameter === 6) {
             buttonClick()
             // buttonCheck 초기화
@@ -407,29 +405,31 @@ function AztiQuestion() {
         )
 
     } else if ( question_parameter === 7) {
-        // localStorage.setItem(
-        //     "userId",
-        //     '2414874219'
-        //   )
-        console.log(SelectUserAzti.user_azti)
-        console.log(typeof(SelectUserAzti.user_azti))
+        localStorage.setItem(
+            "userKoreanAzti",
+            SelectUserAzti.user_azti_type
+          )
+        // console.log(localStorage.getItem("login-kakao"))
+        // console.log(SelectUserAzti.user_azti)
+        // console.log(typeof(SelectUserAzti.user_azti))
         const buttonToMain = () => {
             const hook = () => {
-                axios({
-                    url : 'http://localhost:8080/api/user/azti',
-                    method : 'PATCH',
-                    data : {
-                        aztiType : SelectUserAzti.user_azti
-                    }
-                })
-                .then(response => {
-                    console.log(response)
-                }).catch(err => {
-                    console.log(err)
-                })
-              }
+                const url = 'http://localhost:8080/api/user/azti'
+                const data = {
+                    'aztiType' : `${SelectUserAzti.user_azti}`
+                }
+                axios.patch(url, data, {
+                    headers: {
+                      'Authorization': `${localStorage.getItem("login-kakao")}`
+                    },
+              }).then( (res) => {
+                console.log(res)
+              }).then( (err) => {
+                console.log(err)
+              })
+            }
             hook()
-            // navigate('/main')
+            navigate('/main')
         }
 
         return (
@@ -437,7 +437,6 @@ function AztiQuestion() {
                 <h1 className="text-yellow-1" >결과</h1>
                 <h3 className="text-orange-4"> 당신은 </h3>
                 <h3 className="text-orange-3">{SelectUserAzti.user_azti_type}</h3>
-                <h3 className="text-orange-4" >아재</h3>
                 <img
                 src={'https://aztipictures.s3.ap-northeast-2.amazonaws.com/azti_pic/'+SelectUserAzti.user_azti+'.png'}
                 id="user-azti" 
