@@ -14,7 +14,7 @@ import ReplayIcon from '@mui/icons-material/Replay';
 // CSS
 import  "./AztiQuestionCss.css"
 
-import React from "react"
+import React ,{ memo }from "react"
 import { useState , useEffect , useCallback } from "react"
 import { ConstructionOutlined } from "@mui/icons-material";
 import { useSelector , useDispatch } from 'react-redux'
@@ -153,6 +153,32 @@ function AztiQuestion() {
         setParameter((event) => event -= 1)
         setButtonCheck((event) => event = 0)
     }
+
+    
+    // 오늘 식당 추천
+    const [ todayRes, setTodayRes] = useState<string>('')
+    const [ todayMenu, setTodayMenu] = useState<string>('')
+
+    let sPick = Math.floor(Math.random() * 9)
+    useEffect(() => {
+        const recoFood = () => {
+            const url = `http://localhost:8000/data/recommend/cbf/${SelectUserAzti.user_azti}`
+            axios.get(url).then((res) => {
+    
+                
+                const today = res.data.recommendCbfList[sPick]
+    
+                setTodayRes((event) => event = today.resto_name)
+                setTodayMenu((event) => event = today.menu1)
+    
+                console.log(todayRes)
+                console.log(todayMenu)
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
+        recoFood()
+    },[question_parameter === 7])
 
 
     // 현재 문제
@@ -409,25 +435,8 @@ function AztiQuestion() {
         localStorage.setItem(
             "userKoreanAzti",
             SelectUserAzti.user_azti_type
-          )
-        
-        const recoFood = () => {
-            const url = 'http://localhost:8000/data/recommend/cbf'
-            const data = {
-                'aztiType' : `${SelectUserAzti.user_azti}`
-            }
-            axios.get(url,{
-                headers:{
-                    'aztiType' : `${SelectUserAzti.user_azti}`
-                }
-            }).then((res) => {
-                console.log(res)
-            }).catch((err) => {
-                console.log(err)
-            })
-        }
+        )
 
-        recoFood()
         const buttonToMain = () => {
             const hook = () => {
                 const url = 'http://localhost:8080/api/user/azti'
@@ -459,7 +468,29 @@ function AztiQuestion() {
                 id="user-azti" 
                 alt="user_azti"/>
                 <h6 color="secondary"> - 출저 : 그림왕 양치기 -</h6>
-                
+                <Grid
+                    container
+                    display="flex"
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="center"
+                >
+                <span className="text-orange-5"> 오늘 </span>
+                <p> </p>
+                <span className="text-orange-3"> {todayRes} </span>
+                <span className="text-orange-5">에서</span>
+                </Grid>
+                <Grid
+                    container
+                    display="flex"
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="center"
+                >
+                <span className="text-orange-3"> {todayMenu} </span>
+                <span className="text-orange-5">어때요?</span>
+                </Grid>
+
 
                 {/* <Button onClick={() => dispatch({type : userinfo(), payload: user_status})}></Button> */}
                 {/* <Button onClick={() => dispatch(userinfo(user_status))}> */}
@@ -471,7 +502,7 @@ function AztiQuestion() {
                     alignItems="center"
                     justifyContent="center"
                 >
-                    <KakaoShareButton />
+                    <KakaoShareButton todayRes={todayRes} todayMenu={todayMenu} />
                     <Button color="secondary" onClick={resetButton}>
                         <ReplayIcon/>
                     </Button>
