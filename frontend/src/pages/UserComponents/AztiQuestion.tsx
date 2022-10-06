@@ -362,6 +362,7 @@ function AztiQuestion() {
             </div>
         )
     } else if ( question_parameter === 6) {
+
         return (
             <div>
                 <br />
@@ -409,9 +410,24 @@ function AztiQuestion() {
             "userKoreanAzti",
             SelectUserAzti.user_azti_type
           )
-        // console.log(localStorage.getItem("login-kakao"))
-        // console.log(SelectUserAzti.user_azti)
-        // console.log(typeof(SelectUserAzti.user_azti))
+        
+        const recoFood = () => {
+            const url = 'http://localhost:8000/data/recommend/cbf'
+            const data = {
+                'aztiType' : `${SelectUserAzti.user_azti}`
+            }
+            axios.get(url,{
+                headers:{
+                    'aztiType' : `${SelectUserAzti.user_azti}`
+                }
+            }).then((res) => {
+                console.log(res)
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
+
+        recoFood()
         const buttonToMain = () => {
             const hook = () => {
                 const url = 'http://localhost:8080/api/user/azti'
@@ -429,6 +445,7 @@ function AztiQuestion() {
               })
             }
             hook()
+
             navigate('/main')
         }
 
