@@ -43,6 +43,7 @@ function AztiQuestion() {
         sendUserAzti()
     },[])
 
+
     useEffect(() => {
         const script = document.createElement('script')
         script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
@@ -160,6 +161,7 @@ function AztiQuestion() {
     const [ todayMenu, setTodayMenu] = useState<string>('')
 
     let sPick = Math.floor(Math.random() * 9)
+
     useEffect(() => {
         const recoFood = () => {
             const url = `http://j7a401.p.ssafy.io/data/recommend/cbf/${SelectUserAzti.user_azti}`
@@ -171,14 +173,16 @@ function AztiQuestion() {
                 setTodayRes((event) => event = today.resto_name)
                 setTodayMenu((event) => event = today.menu1)
     
-                console.log(todayRes)
-                console.log(todayMenu)
+                // console.log(todayRes)
+                // console.log(todayMenu)
             }).catch((err) => {
                 console.log(err)
             })
         }
         recoFood()
-    },[question_parameter === 7])
+        console.log(todayRes)
+        console.log(todayMenu)
+    },[question_parameter === 5 || question_parameter === 6])
 
 
     // 현재 문제
@@ -432,6 +436,7 @@ function AztiQuestion() {
         )
 
     } else if ( question_parameter === 7) {
+        // recommendToday()
         localStorage.setItem(
             "userKoreanAzti",
             SelectUserAzti.user_azti_type
@@ -461,13 +466,16 @@ function AztiQuestion() {
         return (
             <div>
                 <h1 className="text-yellow-1" >결과</h1>
-                <h3 className="text-orange-4"> 당신은 </h3>
-                <h3 className="text-orange-3">{SelectUserAzti.user_azti_type}</h3>
-                <img
-                src={'https://aztipictures.s3.ap-northeast-2.amazonaws.com/azti_pic/'+SelectUserAzti.user_azti+'.png'}
-                id="user-azti" 
-                alt="user_azti"/>
-                <h6 color="secondary"> - 출저 : 그림왕 양치기 -</h6>
+                <div className="aztiContainer">
+                    <br />
+                    <h3 className="text-orange-6"> 당신은 </h3>
+                    <h3 className="text-orange-3">{SelectUserAzti.user_azti_type}</h3>
+                    <img
+                    src={'https://aztipictures.s3.ap-northeast-2.amazonaws.com/azti_pic/'+SelectUserAzti.user_azti+'.png'}
+                    id="user-azti" 
+                    alt="user_azti"/>
+                    <h6 color="secondary"> - 출저 : 그림왕 양치기 -</h6>
+                </div>
                 <Grid
                     container
                     display="flex"

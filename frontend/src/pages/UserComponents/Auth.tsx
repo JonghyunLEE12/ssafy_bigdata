@@ -22,9 +22,9 @@ function Auth() {
       try {
         console.log("백 보내기 전");
         const res = await axios.post(
-          `http://j7a401.p.ssafy.io/api/oauth/login/kakao?code=${code}`
+          // `http://j7a401.p.ssafy.io/api/oauth/login/kakao?code=${code}`
           // `http://localhost:5173/api/oauth/login/kakao?code=${code}`
-          // `http://localhost:8080/api/oauth/login/kakao?code=${code}`
+          `http://localhost:8080/api/oauth/login/kakao?code=${code}`
           // onst REDIRECT_URI = "http://localhost:5173/oauth/kakao/callback";
         );
         console.log("백 요청 후");
