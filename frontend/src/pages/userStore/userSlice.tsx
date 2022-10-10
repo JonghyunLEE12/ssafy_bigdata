@@ -14,7 +14,9 @@ export interface AztiState {
     place : string,
     drinking : string,
     user_azti : string,
-    user_azti_type : string
+    user_azti_type : string,
+    todayRes : string,
+    todayMenu : string,
 }
 
 export interface AztiTypeState {
@@ -51,7 +53,9 @@ const initialState : AztiState = {
     place : '',
     drinking : '',
     user_azti : '',
-    user_azti_type : ''
+    user_azti_type : '',
+    todayRes : '',
+    todayMenu : ''
 }
 
 // AZTI = > 16개 타입
@@ -133,7 +137,9 @@ export const userSlice = createSlice({
                                 place : action.payload.place,
                                 drinking : action.payload.drinking,
                                 user_azti : user,
-                                user_azti_type : korean_azti
+                                user_azti_type : korean_azti,
+                                todayRes : action.payload.todayRes,
+                                todayMenu : action.payload.todayMenu
                             }
                         }
                     }
